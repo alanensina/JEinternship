@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head><meta charset = "UTF-8"/></head>
+<body>
+	<section class="layout-content" layout:fragment="corpo">
+	
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<i class="oi oi-caret-right"></i>
+						<span>Resumo</span>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		
+		<div class="container">
+			<div id="list-home" class="row">
+				<div class="col-4">
+					<div class="list-group" id="list-tab" role="tablist">
+						
+						<a class="list-group-item list-group-item-action active"
+							id="list-descricao-list" data-toggle="list" href="#descricao"
+							role="tab" aria-controls="descricao">Descrição</a> 
+						
+						<a	class="list-group-item list-group-item-action" id="list-cadastro-list"
+							data-toggle="list" href="#cadastro" role="tab" aria-controls="sts">Requisitos do cadastro</a> 
+						
+						<a class="list-group-item list-group-item-action"
+							id="list-subordinadosList-list" data-toggle="list" href="#subordinadosList"
+							role="tab" aria-controls="subordinadosList">Requisitos da listagem</a>
+					</div>
+				</div>
+				<div class="col-8">
+					<div class="tab-content" id="nav-tabContent">
+						<div class="tab-pane fade show active" id="descricao"
+							role="tabpanel" aria-labelledby="list-descricao-list">
+							Desenvolver uma aplicação de um CRUD (listagem, criação, alteração e remoção) de usuários.
+							
+						</div>
+						<div class="tab-pane fade" id="cadastro" role="tabpanel"
+							aria-labelledby="list-cadastro-list">
+							Requisitos do CRUD:
+							<p>
+							<p>- O usuário deve possuir os campos: Nome, E-mail, Telefone, Cargo, Login, Senha, CPF, Superior, Endereços.
+							<p>- Os campos Nome, E-mail, Cargo, Login e Senha são obrigatórios.
+							<p>- Somente os seguintes cargos serão aceitos: Diretor, Gerente ou Consultor.
+							<p>- O Superior será um outro usuário e deverá seguir a hierarquia: O Diretor poderá ter como superior somente outro usuário com esse mesmo cargo. O Gerente poderá ter como superior somente outro Gerente ou Diretor. O Consultor poderá ter como superior qualquer usuário.
+							<p>- O Endereço deverá conter os seguintes campos: Rua, Número, Complemento, Bairro, Cidade, Estado, CEP.
+							<p>- Caso possua endereço os campos Rua, Número, Bairro, Cidade, Estado e CEP são obrigatórios.
+						</div>
+						<div class="tab-pane fade" id="subordinadosList" role="tabpanel"
+							aria-labelledby="list-subordinadosList-list">
+							Requisitos da lista de subordinados:
+							<p>
+							<p>- A listagem deverá conter um campo para escolha do usuário.
+							<p>- Listar todos os subordinados de um superior, ou seja, todos os usuários filtrados pelo superior selecionado.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>		
+</body>
+</html>
