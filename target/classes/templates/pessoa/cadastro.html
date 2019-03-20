@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+
+<head>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+
+	<section class="layout-content" layout:fragment="corpo">
+		<div class="page-header">
+			<nav class="navbar navbar-expand-md navbar-top bg-light">
+				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav">
+						<li class="nav-item active">
+							<i class="oi oi-caret-right"></i>
+							<span>Cadastro de Pessoas</span>
+						</li>
+					</ul>
+				</div>
+				<a class="btn btn-primary btn-md" href="/pessoas/listar" role="button">
+					<span class="oi oi-spreadsheet" title="Cadastro" aria-hidden="true"></span>
+					<span>Listar de subordinados</span>
+				</a>
+			</nav>
+		</div>
+
+		<div class="container" id="cadastro">
+
+			<div th:replace="fragments/alert"></div>
+
+			<form action="/pessoas/salvar" method="POST">
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="nome">Nome completo</label>
+						<input type="text" class="form-control" id="nome" 
+							autofocus="autofocus" name="nome" value="" />
+						<div class="invalid-feedback">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="nome">Email</label>
+						<input type="text" class="form-control" id="email" autofocus="autofocus"
+							name="email" value="" />
+						<div class="invalid-feedback">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="nome">CPF</label>
+						<input type="text" class="form-control" id="cpf" autofocus="autofocus"
+							name="cpf" value="" />
+						<div class="invalid-feedback">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="nome">Telefone</label>
+						<input type="text" class="form-control" id="telefone" 
+							autofocus="autofocus" name="telefone" value="" />
+						<div class="invalid-feedback">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="nome">Login</label>
+						<input type="text" class="form-control" id="login" autofocus="autofocus"
+							name="cpf" value="" />
+						<div class="invalid-feedback">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="nome">Senha</label>
+						<input type="password" class="form-control" id="senha" autofocus="autofocus"
+							name="telefone" value="" />
+						<div class="invalid-feedback">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="cargo">Cargo</label>
+							<select id="cargo" class="form-control" name="cargo">
+								<option value="">Selecione...</option>
+								<option value="1">Diretor</option>
+								<option value="2">Gerente</option>
+								<option value="3">Consultor</option>
+							</select>
+							<div class="invalid-feedback">
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="superior">Superior</label>
+							<select id="superior" class="form-control" name="superior">
+								<option value="">Selecione...</option>
+								<option value="1">Alan Ensina</option>
+								<option value="2">Bill Gates</option>
+								<option value="3">Elon Musk</option>
+							</select>
+							<div class="invalid-feedback">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="cidade">Cidade</label>
+						<input type="text" class="form-control" id="cidade" name="endereco.cidade" value="" />
+						<div class="invalid-feedback">
+
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="logradouro">Logradouro</label>
+						<input type="text" class="form-control" id="logradouro" name="endereco.logradouro" value="" />
+						<div class="invalid-feedback">
+
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="numero">Número</label>
+						<input type="text" class="form-control" id="numero" name="endereco.numero" value="" />
+						<div class="invalid-feedback">
+
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="complemento">Complemento</label>
+						<input type="text" class="form-control" id="complemento"
+							placeholder="Condomínio, Fundos, Casa..." name="endereco.complemento" value="" />
+						<div class="invalid-feedback">
+
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="bairro">Bairro</label>
+						<input type="text" class="form-control" id="bairro" name="endereco.bairro" value="" />
+						<div class="invalid-feedback">
+
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="uf">UF</label>
+						<select id="uf" class="form-control" name="endereco.uf">
+							<option value="">Selecione...</option>
+							<option value="AC">AC</option>
+							<option value="AL">AL</option>
+							<option value="AM">AM</option>
+							<option value="BA">BA</option>
+							<option value="CE">CE</option>
+							<option value="DF">DF</option>
+							<option value="ES">ES</option>
+							<option value="GO">GO</option>
+							<option value="MA">MA</option>
+							<option value="MT">MT</option>
+							<option value="MS">MS</option>
+							<option value="MG">MG</option>
+							<option value="PA">PA</option>
+							<option value="PB">PB</option>
+							<option value="PR">PR</option>
+							<option value="PE">PE</option>
+							<option value="PI">PI</option>
+							<option value="RJ">RJ</option>
+							<option value="RN">RN</option>
+							<option value="RS">RS</option>
+							<option value="RO">RO</option>
+							<option value="RR">RR</option>
+							<option value="SC">SC</option>
+							<option value="SP">SP</option>
+							<option value="SE">SE</option>
+							<option value="TO">TO</option>
+						</select>
+						<div class="invalid-feedback">
+
+						</div>
+					</div>
+					<div class="form-group col-md-2">
+						<label for="cep">Cep</label>
+						<input type="text" class="form-control" id="cep" data-mask="00000-000" name="endereco.cep"
+							value="" />
+						<div class="invalid-feedback">
+
+						</div>
+					</div>
+				</div>
+				<input type="hidden" id="id" name="id" value="" />
+				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+			</form>
+		</div>
+	</section>
+	</div>
+	</section>
+</body>
+
+</html>
