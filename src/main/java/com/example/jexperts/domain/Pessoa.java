@@ -1,70 +1,50 @@
 package com.example.jexperts.domain;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
 @Entity
 @Table
 public class Pessoa extends AbstractEntity<Long>{
 	
-	@NotBlank
-	@NotNull
-	@Size(max = 255, min = 3)
-	@Column(unique = true)
+	@Column(nullable = false, unique = true)
 	private String nome;
 	
-	@NotBlank
-	@NotNull
-	@Column
+	@Column(nullable = false, unique = true)
 	private String email;
 	
-	@Column
+	@Column(nullable = false, unique = true)
+	private String cpf;
+	
+	@Column(nullable = false, unique = true)
 	private String telefone;
 	
-	@NotNull(message = "{NotNull.pessoa.cargo}")
+	@Column(nullable = false, unique = true)
+	private String login;
+	
 	@Column(nullable = false)
+	private String senha;
+	
+	@Column(nullable = false, length = 10)
 	@Enumerated(EnumType.STRING)
 	private Cargo cargo;
 	
-	@NotBlank
-	@NotNull
-	@Size(max = 15, min = 4)
-	@Column(unique = true)
-	private String login;
+	@OneToMany
+	private List<Pessoa> superior;
 	
-	@NotBlank
-	@NotNull
-	@Size(max = 15, min = 4)
-	@Column
-	private String senha;
-	
-	@NotBlank
-	@NotNull
-	@Column(unique = true)
-	private String cpf;
-	
-	@NotBlank
-	@NotNull
-	@ManyToOne
-	@JoinColumn(name = "superior_id_fk")
-	private Pessoa superior;
-	
-	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id_fk")
-	private Endereco endereço;
+	private Endereco endereco;
 
 	public String getNome() {
 		return nome;
@@ -82,20 +62,20 @@ public class Pessoa extends AbstractEntity<Long>{
 		this.email = email;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 	public String getTelefone() {
 		return telefone;
 	}
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-
-	public Cargo getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(Cargo cargo) {
-		this.cargo = cargo;
 	}
 
 	public String getLogin() {
@@ -114,27 +94,27 @@ public class Pessoa extends AbstractEntity<Long>{
 		this.senha = senha;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public Cargo getCargo() {
+		return cargo;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCargo(Cargo cargo) {
+		this.cargo = cargo;
 	}
 
-	public Pessoa getSuperior() {
+	public List<Pessoa> getSuperior() {
 		return superior;
 	}
 
-	public void setSuperior(Pessoa superior) {
+	public void setSuperior(List<Pessoa> superior) {
 		this.superior = superior;
 	}
 
-	public Endereco getEndereço() {
-		return endereço;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setEndereço(Endereco endereço) {
-		this.endereço = endereço;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 }
