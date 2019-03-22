@@ -1,4 +1,4 @@
-package com.example.jexperts.domain;
+package com.example.jexperts.domain.enums;
 
 public enum UF {
 	AC("AC", "Acre"), 

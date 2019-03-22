@@ -17,4 +17,5 @@ public interface PessoaServiceInterface {
 	List<Pessoa> buscarTodos();
 
 	List<Pessoa> buscarPorNome(String nome);
+	
 }

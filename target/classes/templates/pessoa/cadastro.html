@@ -29,8 +29,7 @@
 
 			<div th:replace="fragments/alert"></div>
 
-			<form th:action="@{pessoas/salvar}" 
-	                  th:object="${pessoa}" method="POST">
+			<form th:action="${pessoa.id == null} ? @{/pessoas/salvar} : @{/pessoas/editar}" th:object="${pessoa}" method="POST">
 	                  
 				<div class="form-row">
 					<div class="form-group col-md-6">
@@ -70,7 +69,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label for="nome">Senha</label>
-						<input type="password" class="form-control" id="senha" autofocus="autofocus"
+						<input type="text" class="form-control" id="senha" autofocus="autofocus"
 							th:field="*{senha}" />
 						<div class="invalid-feedback">
 						</div>
@@ -79,8 +78,9 @@
 						<div class="form-group col-md-12">
 							<label for="cargo">Cargo</label>
 							<select id="cargo" class="form-control" th:field="*{cargo}">
-								<option value="">Selecione...</option>
-								<option th:each="uf : ${cargos}" th:value="${cargo}" th:text="${cargo.descricao}"></option>
+								<option value="Diretor">Diretor</option>
+	                            <option value="Gerente">Gerente</option>
+	                            <option value="Consultor">Consultor</option>
 							</select>
 							<div class="invalid-feedback">
 							</div>
@@ -90,8 +90,8 @@
 						<div class="form-group col-md-12">
 							<label for="superior">Superior</label>
 							<select id="superior" class="form-control" th:field="*{superior}">
-								<option value="">Selecione...</option>
-								<option th:each="pessoa : ${pessoas}" th:value="pessoa" th:text="${pessoa.nome}"></option>
+								<option value="Teste">Selecione...</option>
+								<option th:each="s : ${superiores}" th:value= "${s.id}" th:text="${s.nome}">Lista de superiores</option>
 							</select>
 							<div class="invalid-feedback">
 							</div>
@@ -108,7 +108,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label for="logradouro">Logradouro</label>
-						<input type="text" class="form-control" id="logradouro" th:field="*{endereco.cidade}" />
+						<input type="text" class="form-control" id="logradouro" th:field="*{endereco.logradouro}" />
 						<div class="invalid-feedback">
 
 						</div>

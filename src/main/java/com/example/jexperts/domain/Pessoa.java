@@ -5,9 +5,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -35,12 +34,15 @@ public class Pessoa extends AbstractEntity<Long>{
 	@Column(nullable = false)
 	private String senha;
 	
-	@Column(nullable = false, length = 10)
-	@Enumerated(EnumType.STRING)
-	private Cargo cargo;
+	@Column(nullable = false, unique = true)
+	private String cargo;
 	
-	@OneToMany
-	private List<Pessoa> superior;
+	@ManyToOne
+	@JoinColumn(name = "fk_superior")
+	private Pessoa superior;
+	
+	@OneToMany(mappedBy = "pessoa")
+	private List<Pessoa> listaDeSuperiores;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id_fk")
@@ -94,20 +96,28 @@ public class Pessoa extends AbstractEntity<Long>{
 		this.senha = senha;
 	}
 
-	public Cargo getCargo() {
+	public String getCargo() {
 		return cargo;
 	}
 
-	public void setCargo(Cargo cargo) {
+	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
 
-	public List<Pessoa> getSuperior() {
+	public Pessoa getSuperior() {
 		return superior;
 	}
 
-	public void setSuperior(List<Pessoa> superior) {
+	public void setSuperior(Pessoa superior) {
 		this.superior = superior;
+	}
+
+	public List<Pessoa> getListaDeSuperiores() {
+		return listaDeSuperiores;
+	}
+
+	public void setListaDeSuperiores(List<Pessoa> listaDeSuperiores) {
+		this.listaDeSuperiores = listaDeSuperiores;
 	}
 
 	public Endereco getEndereco() {

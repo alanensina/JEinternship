@@ -45,4 +45,5 @@ public class PessoaService implements PessoaServiceInterface {
 	public List<Pessoa> buscarPorNome(String nome) {
 		return dao.findByNome(nome);
 	}
+
 }
