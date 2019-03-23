@@ -7,33 +7,49 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
 @Entity
 @Table
 public class Pessoa extends AbstractEntity<Long>{
 	
-	@Column(nullable = false, unique = true)
+	@NotBlank
+	@NotNull
+	@Size(min = 2, max = 255)
+	@Column(nullable = false)
 	private String nome;
 	
-	@Column(nullable = false, unique = true)
+	@NotBlank
+	@Column(nullable = false)
 	private String email;
-	
-	@Column(nullable = false, unique = true)
+
+	@NotNull
+	@Column(nullable = false)
+	@Size(min = 14 , max = 14, message = "{Size.pessoa.cpf}")
 	private String cpf;
 	
-	@Column(nullable = false, unique = true)
+	@Column
 	private String telefone;
 	
-	@Column(nullable = false, unique = true)
+	@NotNull
+	@NotBlank
+	@Column(nullable = false)
 	private String login;
 	
+	@NotNull
+	@NotBlank
 	@Column(nullable = false)
 	private String senha;
 	
+	@NotNull(message = "{Size.pessoa.cargo}")
 	@Column(nullable = false)
 	private String cargo;
 	
+	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id_fk")
 	private Endereco endereco;

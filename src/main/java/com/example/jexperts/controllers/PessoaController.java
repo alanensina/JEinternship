@@ -2,9 +2,12 @@ package com.example.jexperts.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,7 +39,12 @@ public class PessoaController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvar(Pessoa pessoa, RedirectAttributes attr) {
+	public String salvar(@Valid Pessoa pessoa, BindingResult result, RedirectAttributes attr) {
+
+		if (result.hasErrors()) {
+			return "/pessoa/cadastro";
+		}
+
 		service.salvar(pessoa);
 		attr.addFlashAttribute("success", "Pessoa cadastrada com sucesso.");
 		return "redirect:/pessoas/cadastrar";
@@ -49,7 +57,12 @@ public class PessoaController {
 	}
 
 	@PostMapping("/editar")
-	public String editar(Pessoa pessoa, RedirectAttributes attr) {
+	public String editar(@Valid Pessoa pessoa, BindingResult result, RedirectAttributes attr) {
+
+		if (result.hasErrors()) {
+			return "/pessoa/cadastro";
+		}
+
 		service.editar(pessoa);
 		attr.addFlashAttribute("success", "Pessoa editada com sucesso.");
 		return "redirect:/pessoas/cadastrar";
@@ -75,7 +88,7 @@ public class PessoaController {
 	public UF[] getUFs() {
 		return UF.values();
 	}
-	
+
 	@ModelAttribute("superiores")
 	public List<Pessoa> getSuperiores() {
 		return service.buscarTodos();
