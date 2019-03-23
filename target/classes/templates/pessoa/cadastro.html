@@ -90,8 +90,7 @@
 						<div class="form-group col-md-12">
 							<label for="superior">Superior</label>
 							<select id="superior" class="form-control" th:field="*{superior}">
-								<option value="Teste">Selecione...</option>
-								<option th:each="s : ${superiores}" th:value= "${s.id}" th:text="${s.nome}">Lista de superiores</option>
+							<option th:each="s : ${superiores}" th:value= "${s.id}" th:text="${s.nome}">Lista de superiores</option>
 							</select>
 							<div class="invalid-feedback">
 							</div>

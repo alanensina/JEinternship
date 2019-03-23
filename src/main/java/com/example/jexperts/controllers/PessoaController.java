@@ -71,13 +71,13 @@ public class PessoaController {
 		return "/pessoa/lista";
 	}
 
-	@ModelAttribute("superiores")
-	public List<Pessoa> listaDeSuperiores(){
-		return service.buscarTodos();
-	}
-	
 	@ModelAttribute("ufs")
 	public UF[] getUFs() {
 		return UF.values();
+	}
+	
+	@ModelAttribute("superiores")
+	public List<Pessoa> getSuperiores() {
+		return service.buscarTodos();
 	}
 }

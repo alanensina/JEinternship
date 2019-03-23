@@ -1,13 +1,10 @@
 package com.example.jexperts.domain;
 
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -34,19 +31,15 @@ public class Pessoa extends AbstractEntity<Long>{
 	@Column(nullable = false)
 	private String senha;
 	
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String cargo;
-	
-	@ManyToOne
-	@JoinColumn(name = "fk_superior")
-	private Pessoa superior;
-	
-	@OneToMany(mappedBy = "pessoa")
-	private List<Pessoa> listaDeSuperiores;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id_fk")
 	private Endereco endereco;
+	
+	@JoinColumn(name = "id_superior")
+	private long superior;
 
 	public String getNome() {
 		return nome;
@@ -104,27 +97,19 @@ public class Pessoa extends AbstractEntity<Long>{
 		this.cargo = cargo;
 	}
 
-	public Pessoa getSuperior() {
-		return superior;
-	}
-
-	public void setSuperior(Pessoa superior) {
-		this.superior = superior;
-	}
-
-	public List<Pessoa> getListaDeSuperiores() {
-		return listaDeSuperiores;
-	}
-
-	public void setListaDeSuperiores(List<Pessoa> listaDeSuperiores) {
-		this.listaDeSuperiores = listaDeSuperiores;
-	}
-
 	public Endereco getEndereco() {
 		return endereco;
 	}
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public long getSuperior() {
+		return superior;
+	}
+
+	public void setSuperior(long superior) {
+		this.superior = superior;
 	}
 }

@@ -31,17 +31,20 @@ public class PessoaService implements PessoaServiceInterface {
 		dao.delete(id);
 	}
 
-	@Override @Transactional(readOnly = true)
+	@Override
+	@Transactional(readOnly = true)
 	public Pessoa buscarPorId(Long id) {
-				return dao.findById(id);
+		return dao.findById(id);
 	}
 
-	@Override @Transactional(readOnly = true)
+	@Override
+	@Transactional(readOnly = true)
 	public List<Pessoa> buscarTodos() {
 		return dao.findAll();
 	}
 
-	@Override @Transactional(readOnly = true)
+	@Override
+	@Transactional(readOnly = true)
 	public List<Pessoa> buscarPorNome(String nome) {
 		return dao.findByNome(nome);
 	}
