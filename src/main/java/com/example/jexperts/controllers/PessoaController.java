@@ -65,9 +65,9 @@ public class PessoaController {
 		return "redirect:/pessoas/listar";
 	}
 
-	@GetMapping("/buscar/nome")
-	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {
-		model.addAttribute("pessoas", service.buscarPorNome(nome));
+	@GetMapping("/buscar/superior")
+	public String getPorCargo(@RequestParam("id") Long id, ModelMap model) {
+		model.addAttribute("pessoas", service.buscarPorSuperior(id));
 		return "/pessoa/lista";
 	}
 

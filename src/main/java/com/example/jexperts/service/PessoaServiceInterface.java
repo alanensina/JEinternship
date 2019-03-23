@@ -16,6 +16,5 @@ public interface PessoaServiceInterface {
 	
 	List<Pessoa> buscarTodos();
 
-	List<Pessoa> buscarPorNome(String nome);
-	
+	List<Pessoa> buscarPorSuperior(Long id);
 }

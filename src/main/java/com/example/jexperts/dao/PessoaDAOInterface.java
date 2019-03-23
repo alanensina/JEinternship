@@ -16,5 +16,5 @@ public interface PessoaDAOInterface {
 
 	List<Pessoa> findAll();
 
-	List<Pessoa> findByNome(String nome);
+	List<Pessoa> findBySuperior(Long id);
 }

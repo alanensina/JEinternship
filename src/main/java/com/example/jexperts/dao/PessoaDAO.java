@@ -10,8 +10,8 @@ import com.example.jexperts.domain.Pessoa;
 public class PessoaDAO extends AbstractDAO<Pessoa, Long> implements PessoaDAOInterface{
 
 	@Override
-	public List<Pessoa> findByNome(String nome) {
-		return createQuery("select p from Pessoa p where p.nome like concat('%', ?1, '%')", nome);
+	public List<Pessoa> findBySuperior(Long id) {
+		return createQuery("select f from Pessoa f where f.superior = ?1", id);
 	}
 	
 	

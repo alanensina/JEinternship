@@ -43,10 +43,13 @@ public class PessoaService implements PessoaServiceInterface {
 		return dao.findAll();
 	}
 
-	@Override
 	@Transactional(readOnly = true)
-	public List<Pessoa> buscarPorNome(String nome) {
-		return dao.findByNome(nome);
+	public List<Pessoa> buscarPorSuperior(Long id) {
+		return dao.findBySuperior(id);
 	}
+	
+	
+
+	
 
 }
